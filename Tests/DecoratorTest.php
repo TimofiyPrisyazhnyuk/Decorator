@@ -1,29 +1,33 @@
 <?php
 
-namespace DesignPatterns\Structural\Decorator\Tests;
+namespace Tests;
 
-use Decorator\DoubleRoomBooking;
-use Decorator\ExtraBed;
-use Decorator\WiFi;
+use DoubleRoomBooking;
+use ExtraBed;
+use WiFi;
 
-require __DIR__ . "/../Booking.php";
+spl_autoload_register(function ($class) {
+    include __DIR__ . '/../' . $class . '.php';
+});
 
-foreach (glob("*.php") as $filename) {
-    if (file_exists($file = __DIR__ . '/../' . $filename)) {
-        require_once $file;
-    }
-}
-
+/**
+ * Class DecoratorTest
+ * @package Tests
+ */
 class DecoratorTest
 {
+    /**
+     * Test Decorator.
+     */
     public function test()
     {
         $booking = new DoubleRoomBooking();
         $booking = new WiFi($booking);
         $booking = new ExtraBed($booking);
         print_r($booking->calculatePrice());
-        $booking->getDescription();
+        print_r($booking->getDescription());
     }
 }
 
+// Run test.
 (new DecoratorTest())->test();

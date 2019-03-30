@@ -1,7 +1,8 @@
 <?php
 
-namespace Decorator;
-
+/**
+ * Class BookingDecorator
+ */
 abstract class BookingDecorator implements Booking
 {
     /**
@@ -9,6 +10,10 @@ abstract class BookingDecorator implements Booking
      */
     protected $booking;
 
+    /**
+     * BookingDecorator constructor.
+     * @param Booking $booking
+     */
     public function __construct(Booking $booking)
     {
         $this->booking = $booking;
